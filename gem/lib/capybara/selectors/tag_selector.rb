@@ -33,7 +33,7 @@ module Capybara
         def wait_for_option_with_text(value)
           clicked = false
           begin
-            Timeout.timeout(2) do
+            Timeout.timeout(10) do
               sleep(0.1) unless page.has_selector?(select2_option_selector, text: value)
             end
           rescue TimeoutError
