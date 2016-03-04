@@ -30,6 +30,9 @@ module Capybara
         find(:xpath, "//body").find(".select2-search--dropdown input.select2-search__field").set(value)
         @drop_container = ".select2-results"
       elsif find(:xpath, "//body").has_selector?(".select2-dropdown")
+        if options.has_key? :search_inline
+          select2_container.find('.select2-container').find('input.select2-search__field').set(value)
+        end
         # select2 version 4.0
         @drop_container = ".select2-dropdown"
       else
